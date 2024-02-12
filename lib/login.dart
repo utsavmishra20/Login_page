@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class Login extends StatefulWidget {
@@ -8,10 +9,27 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  TextEditingController email = TextEditingController();
+  TextEditingController password = TextEditingController();
+  void signInWithEmailAndPassword() async {
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: email.text, password: password.text);
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        print('No user found for that email.');
+      } else if (e.code == 'wrong-password') {
+        print('Wrong password provided for that user.');
+      }
+    }
+  }
+
+  double? nFormHeight = 30;
   @override
   Widget build(BuildContext context) {
+    final _formKey = GlobalKey<FormState>();
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
           image: DecorationImage(
               image: AssetImage('/login.png'), fit: BoxFit.cover)),
       child: Scaffold(
@@ -19,8 +37,8 @@ class _LoginState extends State<Login> {
           body: Stack(
             children: [
               Container(
-                padding: EdgeInsets.only(left: 20, top: 135),
-                child: Text("Welcome \n back",
+                padding: const EdgeInsets.only(left: 20, top: 135),
+                child: const Text("Welcome \n back",
                     style: TextStyle(fontSize: 35, color: Colors.white)),
               ),
               SingleChildScrollView(
@@ -31,52 +49,53 @@ class _LoginState extends State<Login> {
                     right: 30),
                 child: Column(
                   children: [
-                    TextField(
-                      decoration: InputDecoration(
-                          fillColor: Colors.grey.shade400,
-                          filled: true,
-                          hintText: 'Email',
-                          hintStyle: TextStyle(color: Colors.black),
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10))),
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    TextField(
-                      decoration: InputDecoration(
-                          fillColor: Colors.grey.shade400,
-                          filled: true,
-                          hintText: 'Password',
-                          hintStyle: TextStyle(color: Colors.black),
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10))),
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Container(
-                          width: 110,
-                          height: 60,
-                          child: Center(
-                            child: TextButton(
-                                onPressed: () {},
-                                child: Text(
-                                  'Sign In',
-                                  style: TextStyle(
-                                      color: Colors.black, fontSize: 20),
-                                )),
-                          ),
-                          decoration: BoxDecoration(
-                              color: Color.fromRGBO(39, 135, 214, 1),
-                              borderRadius: BorderRadius.circular(20)),
-                        )
-                      ],
-                    ),
-                    SizedBox(
+                    Form(
+                        key: _formKey,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            TextFormField(
+                              controller: email,
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'Email can not be empty';
+                                }
+                                return null;
+                              },
+                              decoration: const InputDecoration(
+                                label: Text("Email"),
+                                prefixIcon: Icon(Icons.email_outlined),
+                              ),
+                            ),
+                            const SizedBox(height: 10),
+                            TextFormField(
+                              controller: password,
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'Password can not be empty';
+                                }
+                                return null;
+                              },
+                              decoration: const InputDecoration(
+                                label: Text("Password"),
+                                prefixIcon: Icon(Icons.fingerprint),
+                              ),
+                            ),
+                            const SizedBox(height: 30),
+                            SizedBox(
+                              width: double.infinity,
+                              child: ElevatedButton(
+                                onPressed: () {
+                                  if (_formKey.currentState!.validate()) {
+                                    signInWithEmailAndPassword();
+                                  }
+                                },
+                                child: const Text('Sign up'),
+                              ),
+                            )
+                          ],
+                        )),
+                    const SizedBox(
                       height: 40,
                     ),
                     Row(
@@ -86,7 +105,7 @@ class _LoginState extends State<Login> {
                             onPressed: () {
                               Navigator.pushNamed(context, 'register');
                             },
-                            child: Text(
+                            child: const Text(
                               'Sign Up',
                               style: TextStyle(
                                   decoration: TextDecoration.underline,
@@ -94,7 +113,7 @@ class _LoginState extends State<Login> {
                             )),
                         TextButton(
                             onPressed: () {},
-                            child: Text(
+                            child: const Text(
                               'Forget password',
                               style: TextStyle(
                                   decoration: TextDecoration.underline,
