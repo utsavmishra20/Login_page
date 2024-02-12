@@ -8,6 +8,12 @@
       "languageVersion": "3.2"
     },
     {
+      "name": "archive",
+      "rootUri": "file:///home/utsav/.pub-cache/hosted/pub.dev/archive-3.4.10",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "async",
       "rootUri": "file:///home/utsav/.pub-cache/hosted/pub.dev/async-2.11.0",
       "packageUri": "lib/",
@@ -36,6 +42,18 @@
       "rootUri": "file:///home/utsav/.pub-cache/hosted/pub.dev/collection-1.18.0",
       "packageUri": "lib/",
       "languageVersion": "2.18"
+    },
+    {
+      "name": "convert",
+      "rootUri": "file:///home/utsav/.pub-cache/hosted/pub.dev/convert-3.1.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.18"
+    },
+    {
+      "name": "crypto",
+      "rootUri": "file:///home/utsav/.pub-cache/hosted/pub.dev/crypto-3.0.3",
+      "packageUri": "lib/",
+      "languageVersion": "2.19"
     },
     {
       "name": "cupertino_icons",
@@ -110,6 +128,12 @@
       "languageVersion": "3.2"
     },
     {
+      "name": "get",
+      "rootUri": "file:///home/utsav/.pub-cache/hosted/pub.dev/get-4.6.6",
+      "packageUri": "lib/",
+      "languageVersion": "2.15"
+    },
+    {
       "name": "http_parser",
       "rootUri": "file:///home/utsav/.pub-cache/hosted/pub.dev/http_parser-4.0.2",
       "packageUri": "lib/",
@@ -126,6 +150,12 @@
       "rootUri": "file:///home/utsav/.pub-cache/hosted/pub.dev/lints-2.0.1",
       "packageUri": "lib/",
       "languageVersion": "2.17"
+    },
+    {
+      "name": "lottie",
+      "rootUri": "file:///home/utsav/.pub-cache/hosted/pub.dev/lottie-3.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.2"
     },
     {
       "name": "matcher",
@@ -154,6 +184,12 @@
     {
       "name": "plugin_platform_interface",
       "rootUri": "file:///home/utsav/.pub-cache/hosted/pub.dev/plugin_platform_interface-2.1.8",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
+      "name": "pointycastle",
+      "rootUri": "file:///home/utsav/.pub-cache/hosted/pub.dev/pointycastle-3.7.4",
       "packageUri": "lib/",
       "languageVersion": "3.0"
     },
@@ -224,7 +260,7 @@
       "languageVersion": "2.19"
     }
   ],
-  "generated": "2024-02-12T14:46:11.820037Z",
+  "generated": "2024-02-12T16:34:03.540490Z",
   "generator": "pub",
   "generatorVersion": "3.2.3"
 }

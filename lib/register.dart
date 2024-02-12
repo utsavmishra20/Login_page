@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:login_page/login.dart';
 
 class Register extends StatefulWidget {
@@ -12,7 +14,7 @@ class RegisterState extends State<Register> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
           image: DecorationImage(
               image: AssetImage('/register.png'), fit: BoxFit.cover)),
       child: Scaffold(
@@ -24,8 +26,8 @@ class RegisterState extends State<Register> {
           body: Stack(
             children: [
               Container(
-                padding: EdgeInsets.only(left: 20, top: 80),
-                child: Text("Create \nAccount",
+                padding: const EdgeInsets.only(left: 20, top: 80),
+                child: const Text("Create \nAccount",
                     style: TextStyle(fontSize: 35, color: Colors.white)),
               ),
               SingleChildScrollView(
@@ -41,11 +43,11 @@ class RegisterState extends State<Register> {
                           fillColor: Colors.grey.shade400,
                           filled: true,
                           hintText: 'Name',
-                          hintStyle: TextStyle(color: Colors.black),
+                          hintStyle: const TextStyle(color: Colors.black),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10))),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     TextField(
@@ -53,12 +55,12 @@ class RegisterState extends State<Register> {
                           fillColor: Colors.grey.shade400,
                           filled: true,
                           hintText: 'Email',
-                          hintStyle: TextStyle(color: Colors.black),
+                          hintStyle: const TextStyle(color: Colors.black),
                           border: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.white),
+                              borderSide: const BorderSide(color: Colors.white),
                               borderRadius: BorderRadius.circular(10))),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     TextField(
@@ -66,11 +68,11 @@ class RegisterState extends State<Register> {
                           fillColor: Colors.grey.shade400,
                           filled: true,
                           hintText: 'Password',
-                          hintStyle: TextStyle(color: Colors.black),
+                          hintStyle: const TextStyle(color: Colors.black),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10))),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     TextField(
@@ -78,11 +80,11 @@ class RegisterState extends State<Register> {
                           fillColor: Colors.grey.shade400,
                           filled: true,
                           hintText: 'Mobile no.',
-                          hintStyle: TextStyle(color: Colors.black),
+                          hintStyle: const TextStyle(color: Colors.black),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10))),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 30,
                     ),
                     Row(
@@ -92,7 +94,7 @@ class RegisterState extends State<Register> {
                             onPressed: () {
                               Navigator.pushNamed(context, 'login');
                             },
-                            child: Text(
+                            child: const Text(
                               'Sign In',
                               style: TextStyle(
                                   color: Colors.black,
@@ -102,18 +104,20 @@ class RegisterState extends State<Register> {
                         Container(
                           width: 110,
                           height: 60,
+                          decoration: BoxDecoration(
+                              color: const Color.fromRGBO(39, 135, 214, 1),
+                              borderRadius: BorderRadius.circular(20)),
                           child: Center(
                             child: TextButton(
-                                onPressed: () {},
-                                child: Text(
+                                onPressed: () {
+                                  Get.to(const Login());
+                                },
+                                child: const Text(
                                   'Sign Up',
                                   style: TextStyle(
                                       color: Colors.black, fontSize: 20),
                                 )),
                           ),
-                          decoration: BoxDecoration(
-                              color: Color.fromRGBO(39, 135, 214, 1),
-                              borderRadius: BorderRadius.circular(20)),
                         )
                       ],
                     ),
